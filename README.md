@@ -1,4 +1,4 @@
-# Lighthouse
+# Lighthouse:
 
 Role to install Lighthouse service on EL
 
