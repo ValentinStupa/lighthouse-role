@@ -1,0 +1,21 @@
+---
+- name: Lighthouse | Install dependencies
+  become: true
+  ansible.builtin.yum:
+    name:
+      - git
+      - httpd
+    state: present
+- name: Start HTTPD
+  become: true
+  ansible.builtin.service:
+    name: httpd
+    state: started
+- name: Lighthouse | Clone  Repo
+  become: true
+  git:
+    repo: "{{ lighthouse_repo }}"
+    version: master
+    dest: "{{ lighthouse_work_dir }}"
+    ignore_errors: true
+  notify: restart httpd

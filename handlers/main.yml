@@ -1,0 +1,5 @@
+---
+# handlers file for lighthouse-role
+- name: restart httpd
+  become: true
+  command: systemctl reload httpd
